@@ -80,10 +80,12 @@ Other define parameters:
 ## Test and Development
 
 You can test and work on this module also using my other project here:
-https://gitlab.cineca.it/rgibelli/vagrant-puppet
+
+https://github.com/rgibe/vagrant-puppet
 
 As I mentioned this is a "skelethon/example"; you can easily tune the service configuration working on:
 * manifests/config.pp
 * manifests/define/app1_instance.pp
 
-For example creating a "APP2 Service" who need 2 tomcat behind the apache VH or using different defines to manage the 3 components: apache, modjk, tomcat in an indipendent way (ratio X:Y:Z)
+For example creating a "APP2 Service" who need 2 tomcat behind the apache VH or using different defines 
+to manage the 3 components: apache, modjk, tomcat in an indipendent way (ratio X:Y:Z)
