@@ -1,0 +1,11 @@
+# File managed by puppet!
+
+# JkWorkerProperty -> Enables setting worker properties inside Apache configuration file
+
+# Define worker properties
+JkWorkerProperty worker.list=<%= @lb_instance %>
+
+JkWorkerProperty worker.<%= @lb_instance %>.type=ajp13
+JkWorkerProperty worker.<%= @lb_instance %>.host=<%= @hosts.at(0) %>
+JkWorkerProperty worker.<%= @lb_instance %>.port=<%= @jk_port %>
+

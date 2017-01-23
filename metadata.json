@@ -1,0 +1,20 @@
+{
+  "name": "puppet-modapp1",
+  "version": "0.1.0",
+  "author": "R. Gibellini",
+  "summary": "Puppet module to create a service with Apache, ModJK and Tomcat",
+  "license": "Apache 2.0",
+  "source": "https://gitlab.cineca.it/rgibelli/puppet-modapp1",
+  "project_page": "https://gitlab.cineca.it/rgibelli/puppet-modapp1",
+  "issues_url": "https://gitlab.cineca.it/rgibelli/puppet-modapp1",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib"},
+    {"name":"puppetlabs-tomcat"},
+    {"name":"puppetlabs-apache"}
+  ],
+  "operatingsystem_support": [
+    { "operatingsystem": "Debian" },
+    { "operatingsystem": "Ubuntu" }
+  ]
+}
+

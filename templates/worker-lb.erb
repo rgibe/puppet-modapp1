@@ -1,0 +1,36 @@
+# File managed by puppet!
+
+# JkWorkerProperty -> Enables setting worker properties inside Apache configuration file
+
+# Define LB worker properties
+JkWorkerProperty worker.list=<%= @lb_instance %>
+
+JkWorkerProperty worker.<%= @lb_instance %>.type=lb
+JkWorkerProperty worker.<%= @lb_instance %>.sticky_session=true
+JkWorkerProperty worker.<%= @lb_instance %>.method=R
+JkWorkerProperty worker.<%= @lb_instance %>.fail_on_status=503
+JkWorkerProperty worker.<%= @lb_instance %>.max_reply_timeouts=300000
+JkWorkerProperty worker.<%= @lb_instance %>.balance_workers=worker1,worker2
+
+# Define the first member worker
+JkWorkerProperty worker.worker1.type=ajp13
+JkWorkerProperty worker.worker1.host=<%= @hosts.at(0) %>
+JkWorkerProperty worker.worker1.port=<%= @jk_port %>
+JkWorkerProperty worker.worker1.ping_mode=A
+JkWorkerProperty worker.worker1.lbfactor=1
+JkWorkerProperty worker.worker1.fail_on_status=503
+JkWorkerProperty worker.worker1.reply_timeout=90000
+# Define preferred failover node for worker1
+JkWorkerProperty worker.worker1.redirect=worker2
+
+# Define the second member worker
+JkWorkerProperty worker.worker2.type=ajp13
+JkWorkerProperty worker.worker2.host=<%= @hosts.at(1) %>
+JkWorkerProperty worker.worker2.port=<%= @jk_port %>
+JkWorkerProperty worker.worker2.ping_mode=A
+JkWorkerProperty worker.worker2.lbfactor=1
+JkWorkerProperty worker.worker2.fail_on_status=503
+JkWorkerProperty worker.worker2.reply_timeout=90000
+# Disable worker2 for all requests except failover
+JkWorkerProperty worker.worker2.activation=disabled
+
