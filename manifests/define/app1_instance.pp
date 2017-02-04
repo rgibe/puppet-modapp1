@@ -9,7 +9,7 @@ define modapp1::define::app1_instance (
   # you can get it this way
   #notify { "Scope test $modapp1::_instance": }
 
-  $service_url = "www.${name}.dominio.it"
+  $service_url = "www.${name}.changeme.com"
   $hosts = [ 'localhost', 'remote' ]
 
   # Apache VH config

@@ -24,7 +24,7 @@ Mainly working on the define ```manifests/define/app1_instance.pp``` you should 
 
 ### Beginning with modapp1
 
-By default, *just including* this module, you will get an "Hello World" javascript running inside a tomcat responding at the URL http://www.test1.dominio.it
+By default, *just including* this module, you will get an "Hello World" javascript running inside a tomcat responding at the URL http://www.test1.changeme.com
 
 The module accepts an "instance name parameter" so you can easily define your client URL.
 
@@ -46,7 +46,7 @@ classes:
 modapp1::instance: 'client1'
 ~~~
 
-You will get the service responding at http://www.client1.dominio.it
+You will get the service responding at http://www.client1.changeme.com
 
 ## Usage
 
@@ -68,8 +68,8 @@ app1_instances:
 ~~~
 
 you will get the following "APP1 Services":
-* http://www.client1.dominio.it
-* http://www.client2.dominio.it
+* http://www.client1.changeme.com
+* http://www.client2.changeme.com
 
 Other define parameters:
 * vh_port
@@ -82,6 +82,17 @@ Other define parameters:
 You can test and work on this module also using my other project here:
 
 https://github.com/rgibe/vagrant-puppet
+
+~~~
+git clone https://github.com/rgibe/vagrant-puppet
+cd vagrant-puppet
+./vps.sh ~/Desktop/test1 https://github.com/rgibe/puppet-modapp1
+cd ~/Desktop/test1
+vagrant up
+...
+==> server: Machine 'server' has a post `vagrant up` message.
+==> server: The application is available at http://127.0.0.1:3080
+~~~
 
 As I mentioned this is a "skelethon/example"; you can easily tune the service configuration working on:
 * manifests/config.pp
